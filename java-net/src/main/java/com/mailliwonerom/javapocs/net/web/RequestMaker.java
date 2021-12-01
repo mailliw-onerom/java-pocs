@@ -8,10 +8,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RequestMaker {
 
@@ -30,7 +28,7 @@ public class RequestMaker {
                 .GET()
                 .uri(URI.create("https://api.covidtracking" +
                     ".com/v1/states/" + code.getKey() + "/info.json"))
-                .headers("Accept", "application/json")
+                .headers(splitEntries(headers))
                 .build());
         }
         return requests;
@@ -46,5 +44,14 @@ public class RequestMaker {
                     HttpResponse.BodyHandlers.ofString()));
         }
         return responseContent;
+    }
+
+    protected String[] splitEntries(Headers headers) {
+        List<String> entries = new ArrayList<>(0);
+        for(Map.Entry<String, String> entry : headers.getHeaders().entrySet()) {
+            entries.add(entry.getKey());
+            entries.add(entry.getValue());
+        }
+        return entries.toArray(new String[entries.size()]);
     }
 }
