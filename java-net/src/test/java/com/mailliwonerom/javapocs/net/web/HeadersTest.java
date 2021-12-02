@@ -6,6 +6,11 @@ import com.mailliwonerom.javapocs.net.exception.header.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HeadersTest {
@@ -36,5 +41,27 @@ public class HeadersTest {
                 .addHeader("Accept", "application/json")
                 .addHeader("Accept", "application/json")
                 .build());
+    }
+
+    @Test
+    public void removeHeaderIfExistsInHeader() {
+        Headers localHeaders = new Headers.Builder()
+            .addHeader("Accept", "text/plain")
+            .removeHeader("Accept")
+            .build();
+
+        assertThat(localHeaders.get()).isEmpty();
+    }
+
+    @Test
+    public void receiveAnExceptionIfTryRemoveHeaderThatDoesntExists() {
+        assertThrows(HeaderWithoutKeyValueException.class, () ->
+            new Headers.Builder()
+                .addHeader("Accept", "text/plain")
+                .removeHeader("Authorization"));
+    }
+
+    @Test
+    public void addAllValuesPassedAsKeyValuePairs() {
     }
 }
