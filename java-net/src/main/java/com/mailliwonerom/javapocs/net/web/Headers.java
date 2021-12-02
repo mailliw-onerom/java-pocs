@@ -13,7 +13,7 @@ public class Headers {
         HEADERS = builder.entries();
     }
 
-    public String[] getHeaders() {
+    public String[] get() {
         return HEADERS;
     }
 
@@ -35,7 +35,8 @@ public class Headers {
 
         public Builder removeHeader(String key) {
             if(!headers.containsKey(key)) {
-                throw new HeaderWithoutKeyValueException(key + "doesn't found");
+                throw new HeaderWithoutKeyValueException(key + " doesn't " +
+                    "found");
             }
             headers.remove(key);
             return this;
@@ -51,8 +52,7 @@ public class Headers {
                     headers.put(key, headerMap.get(key));
                 }
             } catch(HeaderKeyAlreadyExistsException e) {
-                throw new HeaderKeyAlreadyExistsException(
-                        "Key already exists");
+                throw new HeaderKeyAlreadyExistsException("Key already exists");
             }
             return this;
         }

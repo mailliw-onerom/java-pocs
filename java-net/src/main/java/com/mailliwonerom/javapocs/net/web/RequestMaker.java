@@ -27,7 +27,7 @@ public class RequestMaker {
                 .GET()
                 .uri(URI.create("https://api.covidtracking" +
                     ".com/v1/states/" + code.getKey() + "/info.json"))
-                .headers(headers.getHeaders())
+                .headers(headers.get())
                 .build());
         }
         return requests;

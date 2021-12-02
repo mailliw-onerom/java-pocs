@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+
     public static void main(String[] args) {
 
         HttpClient httpClient = HttpClient.newHttpClient();
-        Headers headers = new Headers.Builder()
+        RequestMaker requestMaker = new RequestMaker(new Headers.Builder()
             .addHeader("Accept", "application/json")
-            .build();
-        RequestMaker requestMaker = new RequestMaker(headers);
+            .build());
         List<HttpResponse<String>> responseContent = new ArrayList<>(0);
 
         try {
