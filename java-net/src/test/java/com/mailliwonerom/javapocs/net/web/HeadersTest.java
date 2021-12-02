@@ -58,7 +58,8 @@ public class HeadersTest {
         assertThrows(HeaderWithoutKeyValueException.class, () ->
             new Headers.Builder()
                 .addHeader("Accept", "text/plain")
-                .removeHeader("Authorization"));
+                .removeHeader("Authorization")
+                .build());
     }
 
     @Test
