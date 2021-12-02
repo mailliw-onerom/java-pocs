@@ -5,11 +5,10 @@ import com.mailliwonerom.javapocs.net.domain.state.AlphaCode;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RequestMaker {
 
@@ -28,7 +27,7 @@ public class RequestMaker {
                 .GET()
                 .uri(URI.create("https://api.covidtracking" +
                     ".com/v1/states/" + code.getKey() + "/info.json"))
-                .headers(splitEntries(headers))
+                .headers(headers.getHeaders())
                 .build());
         }
         return requests;
@@ -44,14 +43,5 @@ public class RequestMaker {
                     HttpResponse.BodyHandlers.ofString()));
         }
         return responseContent;
-    }
-
-    protected String[] splitEntries(Headers headers) {
-        List<String> entries = new ArrayList<>(0);
-        for(Map.Entry<String, String> entry : headers.getHeaders().entrySet()) {
-            entries.add(entry.getKey());
-            entries.add(entry.getValue());
-        }
-        return entries.toArray(new String[entries.size()]);
     }
 }
