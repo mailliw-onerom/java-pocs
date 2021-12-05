@@ -1,6 +1,8 @@
 package com.mailliwonerom.javapocs.net.web;
 
 import com.mailliwonerom.javapocs.net.domain.state.AlphaCode;
+import com.mailliwonerom.javapocs.net.web.http.Headers;
+import com.mailliwonerom.javapocs.net.web.http.HttpProtocol;
 
 import java.io.IOException;
 import java.net.URI;

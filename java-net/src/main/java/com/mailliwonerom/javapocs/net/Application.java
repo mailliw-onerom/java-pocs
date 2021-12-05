@@ -3,7 +3,7 @@ package com.mailliwonerom.javapocs.net;
 import com.google.gson.Gson;
 import com.mailliwonerom.javapocs.net.domain.state.State;
 import com.mailliwonerom.javapocs.net.domain.state.StatesWrapper;
-import com.mailliwonerom.javapocs.net.web.Headers;
+import com.mailliwonerom.javapocs.net.web.http.Headers;
 import com.mailliwonerom.javapocs.net.web.RequestMaker;
 
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class Application {
 
         HttpClient httpClient = HttpClient.newHttpClient();
         RequestMaker requestMaker = new RequestMaker(new Headers.Builder()
-            .addHeader("Accept", "application/json")
+            .add("Accept", "application/json")
             .build());
         List<HttpResponse<String>> responseContent = new ArrayList<>(0);
 

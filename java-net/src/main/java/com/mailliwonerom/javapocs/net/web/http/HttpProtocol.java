@@ -1,4 +1,4 @@
-package com.mailliwonerom.javapocs.net.web;
+package com.mailliwonerom.javapocs.net.web.http;
 
 import java.net.http.HttpClient;
 
