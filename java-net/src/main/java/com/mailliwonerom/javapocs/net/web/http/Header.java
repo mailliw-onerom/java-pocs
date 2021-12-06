@@ -29,7 +29,9 @@ public class Header {
         this.value.add(value);
     }
 
-    public void add(String key, List<String> values) {
+    public void add(String key, List<String> values) throws
+        IllegalArgumentException {
+
         if(!parse(key, values)) {
             throw new IllegalArgumentException("Invalid parameter");
         }

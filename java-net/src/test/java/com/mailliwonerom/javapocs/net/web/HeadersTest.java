@@ -16,14 +16,14 @@ public class HeadersTest {
     public void addOneKeyValuePairsAsHeader() {
         Headers headers = new Headers.Builder()
             .add("Authorization",
-                "bTFmNG1qM2tKZUtFcG05a25wU2lCU2FyZE04MkptWVI6ZGRVYTIydWVkNllx" +
-                "VHkyVA==")
+                "Basic bTFmNG1qM2tKZUtFcG05a25wU2lCU2FyZE04MkptWVI6ZGRVYTIydW" +
+                    "VkNllxVHkyVA==")
             .build();
 
         assertThat(headers.get()[0]).isEqualTo("Authorization");
         assertThat(headers.get()[1]).isEqualTo(
-            "bTFmNG1qM2tKZUtFcG05a25wU2lCU2FyZE04MkptWVI6ZGRVYTIydWVkNllxVHky" +
-            "VA==");
+            "Basic bTFmNG1qM2tKZUtFcG05a25wU2lCU2FyZE04MkptWVI6ZGRVYTIydWVkNl" +
+                "lxVHkyVA==");
     }
 
     @Test
@@ -96,5 +96,62 @@ public class HeadersTest {
         assertThat(headers.get()[7]).isEqualTo("application/xhtml+xml");
         assertThat(headers.get()[8]).isEqualTo("Accept");
         assertThat(headers.get()[9]).isEqualTo("image/webp");
+    }
+
+    @Test
+    public void getAllHeadersParsedIntoArray() {
+        Headers headers = new Headers.Builder()
+            .add("Accept", "application/xml")
+            .add("Accept", "application/json")
+            .build();
+
+        assertThat(headers.get()).contains("Accept", "application/xml",
+            "Accept", "application/json");
+    }
+
+    @Test
+    public void removeItemsFromHeadersBasedOnKeyPassed() {
+        Headers headers = new Headers.Builder()
+            .add("Accept", "video/webm")
+            .add("Accept", "video/ogg")
+            .add("Accept", "video/*;q=0.9")
+            .add("Accept", "application/ogg;q=0.7")
+            .add("Content-Type", "application/json")
+            .build();
+
+        headers.remove("Accept");
+
+        assertThat(headers.get()[0]).contains("Content-Type");
+        assertThat(headers.get()[1]).contains("application/json");
+    }
+
+    @Test
+    public void removeAllHeadersAssigned() {
+        Headers headers = new Headers.Builder()
+                .add("Accept", "video/webm")
+                .add("Accept", "video/ogg")
+                .add("Content-Type", "application/json")
+                .add("X-Api-Key", "tW4biIqUPxhhfbJ5nzhxTXoCj6xiDNRg")
+                .build();
+
+        headers.removeAll();
+        assertThat(headers.get()).isEmpty();
+    }
+
+    @Test
+    public void parseAllEntriesFromArrayListOfHeaderTypeToStringArray() {
+        Headers headers = new Headers.Builder()
+            .add("Accept", "application/json")
+            .add("Accept", "application/xml")
+            .add("X-Api-Key", "tW4biIqUPxhhfbJ5nzhxTXoCj6xiDNRg")
+            .build();
+
+        String[] headersToArray = {
+            "Accept", "application/json",
+            "Accept", "application/xml",
+            "X-Api-Key", "tW4biIqUPxhhfbJ5nzhxTXoCj6xiDNRg"
+        };
+
+        assertThat(headers.get()).contains(headersToArray);
     }
 }
