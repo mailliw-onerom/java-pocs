@@ -7,7 +7,9 @@ public class Header {
     private String key;
     private List<String> value;
 
-    public Header() {}
+    public Header() {
+        this.value = new ArrayList<>();
+    }
 
     public Header(String key, List<String> value) {
         this.key = key;

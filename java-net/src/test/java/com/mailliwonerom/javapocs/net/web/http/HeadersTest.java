@@ -1,6 +1,5 @@
-package com.mailliwonerom.javapocs.net.web;
+package com.mailliwonerom.javapocs.net.web.http;
 
-import com.mailliwonerom.javapocs.net.web.http.Headers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
