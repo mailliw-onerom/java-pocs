@@ -20,7 +20,7 @@ public class HeaderTest {
     }
 
     @Test
-    public void receiveAnExceptionIfOneorBothParametersAreEmptyOrNull() {
+    public void receiveAnExceptionIfOneOrBothParametersAreEmptyOrNull() {
         Header header = new Header();
 
         assertThrows(IllegalArgumentException.class, () -> {
