@@ -44,8 +44,18 @@ public class HeaderTest {
     }
 
     @Test
-    public void parseIfParametersArentNullOrEmpty() {
+    public void parseIfParametersArentNullOrEmptyAndReturnsTrue() {
         assertThat(new Header().parse("Accept", List.of("text/plain",
             "image/webp"))).isTrue();
+        assertThat(new Header().parse("Accept", "text/plain")).isTrue();
+    }
+
+    @Test
+    public void parseIfParametersAreNullOrEmptyAndReturnsFalse() {
+        assertThat(new Header().parse(null, null)).isFalse();
+        assertThat(new Header().parse("", List.of("text/plain",
+            "image/webp"))).isFalse();
+        assertThat(new Header().parse("Accept", "")).isFalse();
+        assertThat(new Header().parse("Accept", List.of(""))).isFalse();
     }
 }

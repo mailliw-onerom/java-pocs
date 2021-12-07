@@ -42,7 +42,7 @@ public class Header {
 
     protected boolean parse(String... items) {
         for(String item : items) {
-            if((item.equals("")) || (item == null)) {
+            if((item == null) || (item.equals(""))) {
                 return false;
             }
         }
