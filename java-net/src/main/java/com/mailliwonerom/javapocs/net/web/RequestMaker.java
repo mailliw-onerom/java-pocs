@@ -9,8 +9,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 public class RequestMaker {
 
@@ -30,13 +32,14 @@ public class RequestMaker {
                 .uri(URI.create("https://api.covidtracking" +
                     ".com/v1/states/" + code.getKey() + "/info.json"))
                 .headers(headers.get())
+                .timeout(Duration.ofSeconds(55))
                 .build());
         }
         return requests;
     }
 
     public List<HttpResponse<String>> send(HttpClient httpClient) throws
-        IOException, InterruptedException {
+        IOException, InterruptedException, TimeoutException {
 
         List<HttpResponse<String>> responseContent = new ArrayList<>(0);
 

@@ -11,6 +11,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 public class Application {
 
@@ -24,7 +25,7 @@ public class Application {
 
         try {
             responseContent = requestMaker.send(httpClient);
-        } catch(IOException | InterruptedException e) {
+        } catch(IOException | InterruptedException | TimeoutException e) {
             e.printStackTrace();
         }
 
