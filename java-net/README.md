@@ -1,6 +1,11 @@
-# JAVA 11: EXPLORING .NET PACKAGE
+# JAVA 11: EXPLORING `.JAVA.NET.HTTP` PACKAGE
 
-Response from request:
+Project sample that uses **Java 11** HTTP resources, demonstrating a way to 
+make web requests, using features internal of the package.
+
+## RESPONSE MODEL
+
+The **JSON** bellow was made using the payload from response:
 
 ```json
 {
