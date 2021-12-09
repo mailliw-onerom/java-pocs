@@ -12,7 +12,6 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
 
 public class RequestMaker {
 
@@ -32,14 +31,14 @@ public class RequestMaker {
                 .uri(URI.create("https://api.covidtracking" +
                     ".com/v1/states/" + code.getKey() + "/info.json"))
                 .headers(headers.get())
-                .timeout(Duration.ofSeconds(55))
+                .timeout(Duration.ofSeconds(55L))
                 .build());
         }
         return requests;
     }
 
     public List<HttpResponse<String>> send(HttpClient httpClient) throws
-        IOException, InterruptedException, TimeoutException {
+        IOException, InterruptedException {
 
         List<HttpResponse<String>> responseContent = new ArrayList<>(0);
 
