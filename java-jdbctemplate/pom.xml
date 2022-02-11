@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.6.3</version>
+    <relativePath/>
+  </parent>
+
+  <groupId>com.mailliwonerom</groupId>
+  <artifactId>java-jdbctemplate</artifactId>
+  <version>0.0.1</version>
+  <name>java-jdbctemplate</name>
+  <description>Java project using JdbcTemplate class</description>
+
+  <properties>
+    <java.version>11</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.source.level>${java.version}</project.source.level>
+    <project.target.level>${java.version}</project.target.level>
+  </properties>
+
+  <developers>
+    <developer>
+      <name>William Moreno</name>
+      <email>mailliwonerom.contact@gmail.com</email>
+      <roles>
+        <role>Developer</role>
+      </roles>
+      <timezone>-3</timezone>
+      <url>https://github.com/mailliw-onerom</url>
+    </developer>
+  </developers>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <configuration>
+              <additionalProperties>
+                <encoding.source>
+                  ${project.build.sourceEncoding}
+                </encoding.source>
+                <encoding.reporting>
+                  ${project.reporting.outputEncoding}
+                </encoding.reporting>
+                <java.source>
+                  ${project.source.level}
+                </java.source>
+                <java.target>
+                  ${project.target.level}
+                </java.target>
+              </additionalProperties>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
