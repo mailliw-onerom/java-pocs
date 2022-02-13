@@ -5,8 +5,6 @@ import com.mailliwonerom.javapocs.jdbctemplate.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/library")
 public class UserController {
@@ -23,7 +21,11 @@ public class UserController {
     }
 
     @GetMapping("users/{id}")
-    public ResponseEntity<Optional<User>> read(@PathVariable String id) {
-        return userService.readUser(id);
+    public ResponseEntity<User> read(@PathVariable String id) {
+        return userService.parse(id).get() & Boolean.TRUE
+            ? userService.readUser(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build())
+            : ResponseEntity.badRequest().build();
     }
 }

@@ -21,8 +21,8 @@ public class UserService {
         return null;
     }
 
-    public ResponseEntity<Optional<User>> readUser(String id) {
-        return null;
+    public Optional<User> readUser(String id) {
+        return userRepository.readUser(individualTaxpayerReplacer(id));
     }
 
     public ResponseEntity updateUser(String id, User user) {
@@ -33,7 +33,11 @@ public class UserService {
         return null;
     }
 
+    protected String individualTaxpayerReplacer(String input) {
+        return input.replace(".-", "");
+    }
+
     public Optional<Boolean> parse(String id) {
-        return Optional.of(Pattern.compile("^(\\d{3}[.-]?){3}(\\d){2}$").matcher(id).matches());
+        return Optional.of(Pattern.compile("^(\\d{3}.?){3}-(\\d){2}$").matcher(id).matches());
     }
 }
