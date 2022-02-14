@@ -43,7 +43,6 @@ public class UserControllerTests {
 
     @Test
     public void create_Returns_Success_After_Process_Request() throws Exception {
-
         when(userService.createUser(any(User.class))).thenReturn(new ResponseEntity<>(HttpStatus.CREATED));
 
         mockMvc.perform(post("/library/users")

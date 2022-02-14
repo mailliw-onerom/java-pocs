@@ -23,7 +23,7 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public Optional<User> readUser(String id) {
-        return Optional.of(jdbcTemplate.queryForObject("SELECT * FROM user WHERE id = ?", User.class, id));
+        return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM user WHERE id = ?", User.class, id));
     }
 
     @Override
