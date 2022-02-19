@@ -2,11 +2,12 @@ package com.mailliwonerom.javapocs.jdbctemplate.domain.data;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.lang.NonNull;
+import org.springframework.jdbc.core.RowMapper;
 
-import java.io.Serializable;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class User implements Serializable {
+public class User {
 
     private String individualTaxpayer;
     private String name;
@@ -62,5 +63,13 @@ public class User implements Serializable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static class Mapper implements RowMapper<User> {
+        @Override
+        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+            return new User(rs.getString("individual_taxpayer"), rs.getString("name"), rs.getString("course"),
+                rs.getString("period"));
+        }
     }
 }

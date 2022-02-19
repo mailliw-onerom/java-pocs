@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
@@ -19,7 +17,6 @@ import java.util.Optional;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
@@ -39,26 +36,6 @@ public class UserControllerTests {
     public void setUp() {
         userMock = new User("11122233344", "Paola Oliveira", Course.EVT.getCourse(),
             Period.NOCTURNAL.getPeriod());
-    }
-
-    @Test
-    public void create_Returns_Success_After_Process_Request() throws Exception {
-        when(userService.createUser(any(User.class))).thenReturn(new ResponseEntity<>(HttpStatus.CREATED));
-
-        mockMvc.perform(post("/library/users")
-            .content(userMock.toString())
-            .contentType("application/json"))
-            .andExpect(status().is(201));
-    }
-
-    @Test
-    public void create_Returns_Error_If_Payload_Equals_Null() throws Exception {
-        when(userService.createUser(any(User.class))).thenReturn(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
-
-        mockMvc.perform(post("/library/users")
-            .content(new User().toString())
-            .contentType("application/json"))
-            .andExpect(status().is(400));
     }
 
     @Test
