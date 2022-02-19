@@ -38,7 +38,7 @@ public class UserService {
     }
 
     public Optional<Boolean> parse(String id) {
-        return Optional.of(Pattern.compile("^(((\\d{3}\\.){2}(\\d{3}-)(\\d{2}))|((\\d{3}){2}(\\d{3})(\\d{2})))$")
+        return Optional.of(Pattern.compile("^(((\\d{3}\\.){2}(\\d{3}-)(\\d{2}))|((\\d{3}){3}(\\d{2})))$")
             .matcher(id)
             .matches());
     }
