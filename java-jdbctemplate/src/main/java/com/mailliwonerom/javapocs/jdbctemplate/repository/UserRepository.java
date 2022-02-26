@@ -17,21 +17,6 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public int createUser(User user) {
-        return 0;
-    }
-
-    @Override
-    public int updateUser(String id, User user) {
-        return 0;
-    }
-
-    @Override
-    public int deleteUser(String id) {
-        return 0;
-    }
-
-    @Override
     public Optional<User> readUser(String id) {
         try {
             return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM user WHERE individual_taxpayer = ?",
