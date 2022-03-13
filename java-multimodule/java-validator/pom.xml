@@ -16,7 +16,7 @@
 	<artifactId>java-validator</artifactId>
 	<version>0.0.1</version>
 	<name>java-validator</name>
-	<description>Library for individual taxpayer validation</description>
+	<description>Library for individual taxpayer validation.</description>
 
 	<properties>
 		<java.version>11</java.version>
