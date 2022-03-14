@@ -5,7 +5,7 @@ modules are organized as:
 
 - **Gateway** - Receives requests throught an web API;
 - **Validator** - Uses a Brazilian algorithm to verify the ITIN number 
-  `aka CPF or Cadastro de Pessoa Física`.
+  **`aka CPF or Cadastro de Pessoa Física`**.
 
 ## INPUT
 
