@@ -10,7 +10,7 @@ modules are organized as:
 ## INPUT
 
 Both values below are accepted and uses regex to verify the pattern 
-consistence before to send input number to `validator`. On validator the 
+consistence before of send input number to **`validator`**. On validator the 
 input value must be a length of eleven characters:
 
 - **`XXX.XXX.XXX-XX`**
@@ -27,11 +27,11 @@ The calculus uses two steps based on sent number:
 
 - **`X1 X2 X3 . X4 X5 X6 . X7 X8 X9 - X10 X11`**
 
-Step one uses `10` to `2` descendent values:
+Step one uses **`10`** to **`2`** descendent values:
 
 - **`(10 * X1) + (9 * X2) + (... * Xn) + (2 * X9)`**
 
-The total of products sum is divided by `11`:
+The total of products sum is divided by **`11`**:
 
 - **`RES = TOTAL_OF_SUM/11`**
 
@@ -39,16 +39,16 @@ After that, uses only the decimal part to calculate the module:
 
 - **`PRODUCT = RES(DECIMAL_FRAGMENT) * 11`**
 
-Subtract `TOTAL_OF_SUM` from `PRODUCT` resulting on `VD`:
+Subtract **`TOTAL_OF_SUM`** from **`PRODUCT`** resulting on **`VD`**:
 
 - **`VD = TOTAL_OF_SUM - PRODUCT`**
 
-Step two uses `11` to `2` descendent values, but, the last value is the 
-`verification digit VD` obtained on step above:
+Step two uses **`11`** to **`2`** descendent values, but, the last value is the 
+**`verification digit VD`** obtained on step above:
 
 - **`(11 * X1) + (10 * X2) + (... * Xn) + (3 * X9) + (2 * VD)`**
 
 All process is repeated here.
 
-> **p.s: When `VD` equals `0` or `1`, it holds `0`, by other side, `11` is 
+> p.s: When `VD` equals `0` or `1`, it holds `0`, by other side, `11` is 
 > used to subtract from.
