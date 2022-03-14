@@ -1,4 +1,4 @@
-package com.mailliwonerom.javapocs.multimodule.validator.domain.components;
+package com.mailliwonerom.javapocs.multimodule.validator.configs;
 
 import com.mailliwonerom.javapocs.multimodule.validator.domain.services.ItinValidatorService;
 import org.springframework.context.annotation.Bean;

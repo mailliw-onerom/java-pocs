@@ -22,6 +22,18 @@
 		<java.version>11</java.version>
 	</properties>
 
+	<developers>
+		<developer>
+			<name>William Moreno</name>
+			<email>mailliwonerom.contact@gmail.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>-3</timezone>
+			<url>https://github.com/mailliw-onerom</url>
+		</developer>
+	</developers>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
