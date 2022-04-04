@@ -1,6 +1,6 @@
 package com.mailliwonerom.javapocs.multimodule.gateway.domain.exceptions;
 
-import com.mailliwonerom.javapocs.multimodule.gateway.configs.Error;
+import com.mailliwonerom.javapocs.multimodule.gateway.configs.ErrorInitializer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ public class InternalServerErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handler(RuntimeException runtimeException,
         WebRequest webRequest) {
 
-        return handleExceptionInternal(runtimeException, Error.getInstance()
+        return handleExceptionInternal(runtimeException, ErrorInitializer.getErrorInstance()
             .setDetail("500")
             .setMessage(runtimeException.getMessage()).orDefault("Internal Server Error")
             .build(), new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, webRequest);
